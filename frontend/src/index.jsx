@@ -1,14 +1,17 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { ChakraProvider } from '@chakra-ui/react';
 import Chatbot from './chatbot';
 import './style.scss';
 
 function App() {
   return (
-    <div>
-      <h1>This is our title</h1>
-      <Chatbot />
-    </div>
+    <ChakraProvider>
+      <div>
+        <h1>Title</h1>
+        <Chatbot />
+      </div>
+    </ChakraProvider>
   );
 }
 
