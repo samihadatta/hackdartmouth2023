@@ -5,15 +5,16 @@ const router = Router();
 
 // get all submissions
 router.route('/')
-  .get(submissionController.getSubmissions)
-  .post(submissionController.createSubmission);
+    .get(submissionController.getSubmissions)
+    .post(submissionController.createSubmission);
 
 // delete for specific submission
 router.route('/:id')
-  .delete(submissionController.deleteSubmission);
+    .get(submissionController.getSubmissionById)
+    .delete(submissionController.deleteSubmission);
 
 // get submission by tag
-router.route('/:tag')
+router.route('/tag/:tag')
     .get(submissionController.getSubmissionsByTag);
 
 export default router;
