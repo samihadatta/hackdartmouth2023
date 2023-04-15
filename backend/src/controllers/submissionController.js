@@ -31,7 +31,7 @@ const getSubmissions = async (req, res) => {
     }
 };
 
-// get all submissions
+// get submission by id
 const getSubmissionById = async (req, res) => {
     try {
         const submission = await Submission.find({_id: req.params.id});
