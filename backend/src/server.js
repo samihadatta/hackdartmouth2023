@@ -2,6 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import morgan from 'morgan';
+import routers from './routers';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config({ silent: true });
 
 // initialize
 const app = express();
@@ -27,9 +32,22 @@ app.use(express.json()); // To parse the incoming requests with JSON payloads
 
 // additional init stuff should go before hitting the routing
 
+
+Object.keys(routers).forEach((endp) => {
+  app.use(`/${endp}`, routers[endp]);
+});
+
 // default index route
 app.get('/', (req, res) => {
-  res.send('hi');
+  res.send('a');
+});
+
+// Connect the database
+mongoose.connect(process.env.MONGODB_URI).then(() => {
+  mongoose.Promise = global.Promise; // configures mongoose to use ES6 Promises
+  console.info('Connected to Database');
+}).catch((err) => {
+  console.error('Not Connected to Database - ERROR! ', err);
 });
 
 // START THE SERVER
