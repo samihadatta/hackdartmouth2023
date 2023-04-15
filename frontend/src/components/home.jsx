@@ -3,6 +3,7 @@ import Chatbot from './chatbot';
 import SearchBar from './searchBar';
 import Filter from './filter';
 import AddButton from './addButton';
+import Map from './map';
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <Filter />
       <Chatbot />
       <AddButton />
+      <Map />
     </div>
   );
 }
