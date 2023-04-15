@@ -4,7 +4,8 @@
 - Submissions:
     - id
     - description: string
-    - location: (unkown yet)
+    - lng: decimal
+    - lat: decimal
     - tag: String
     - comments: Array
 - Users:
