@@ -5,7 +5,7 @@ import Home from './home';
 function App() {
   return (
     <div>
-      <Container maxW="7xl" p="12">
+      <Container maxW="8xl" p="12">
         <Box>
           <Home />
         </Box>
