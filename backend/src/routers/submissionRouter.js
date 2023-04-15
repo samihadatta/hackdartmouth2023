@@ -4,19 +4,16 @@ import submissionController from '../controllers/submissionController';
 const router = Router();
 
 // get all submissions
-router.route('submission/')
-  .get(submissionController.getSubmissions);
-
-// create submission
-router.route('addSubmission/')
+router.route('/')
+  .get(submissionController.getSubmissions)
   .post(submissionController.createSubmission);
 
 // delete for specific submission
-router.route('deleteSubmission/:id')
+router.route('/:id')
   .delete(submissionController.deleteSubmission);
 
 // get submission by tag
-router.route('submission/:tag')
+router.route('/:tag')
     .get(submissionController.getSubmissionsByTag);
 
 export default router;
