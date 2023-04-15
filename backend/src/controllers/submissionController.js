@@ -22,8 +22,9 @@ const deleteSubmission = async (req, res) => {
 
 // get all submissions
 const getSubmissions = async (req, res) => {
+    console.log("here")
     try {
-        const allSubmissions = await Submission.find();
+        const allSubmissions = await Submission.find({});
         res.status(200).json(allSubmissions);
     } catch (error) {
         res.status(500).json(error);

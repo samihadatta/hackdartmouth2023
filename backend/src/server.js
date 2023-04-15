@@ -31,11 +31,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To parse the incoming requests with JSON payloads
 
 // additional init stuff should go before hitting the routing
-
-
-Object.keys(routers).forEach((endp) => {
-  app.use(`/${endp}`, routers[endp]);
+console.log(routers)
+Object.entries(routers).forEach(([prefix, router]) => {
+  app.use(`/${prefix}`, router);
 });
+// app.use('/api', routers);
+// Object.keys(routers).forEach((endp) => {
+//   app.use(`/${endp}`, routers[endp]);
+// });
 
 // default index route
 app.get('/', (req, res) => {

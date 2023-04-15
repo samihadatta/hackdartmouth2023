@@ -2,9 +2,8 @@ import mongoose, { Schema } from 'mongoose';
 
 const SubmissionSchema = new Schema({
   description: { type: String, default: 'No Description' },
-  author: { type: Schema.Types.ObjectID, ref: 'User' },
   comments: [{ type: String }],
-  tag: { type: Number },
+  tag: { type: String },
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },
