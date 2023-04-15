@@ -2,6 +2,7 @@ import React from 'react';
 import Chatbot from './chatbot';
 import SearchBar from './searchBar';
 import Filter from './filter';
+import AddButton from './addButton';
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       <SearchBar />
       <Filter />
       <Chatbot />
+      <AddButton />
     </div>
   );
 }
