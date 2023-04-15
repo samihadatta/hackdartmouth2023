@@ -24,7 +24,6 @@ function MapContainer(props) {
     });
     pins.current = [new mapboxgl.Marker({
       color: '#FFFFFF',
-    //   draggable: true,
     }).setLngLat([30.5, 50.5])];
     popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
       'Construction on the Washington Monument began in 1848.',
