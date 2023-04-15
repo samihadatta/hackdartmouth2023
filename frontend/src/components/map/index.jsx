@@ -9,6 +9,7 @@ function MapContainer(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const pins = useRef(null);
+  const popups = useRef(null);
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
@@ -25,8 +26,11 @@ function MapContainer(props) {
       color: '#FFFFFF',
     //   draggable: true,
     }).setLngLat([30.5, 50.5])];
-    pins.current.forEach((pin) => {
-      pin.addTo(map.current);
+    popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
+      'Construction on the Washington Monument began in 1848.',
+    )];
+    pins.current.forEach((pin, i) => {
+      pin.setPopup(popups.current[i]).addTo(map.current);
     });
   });
 
