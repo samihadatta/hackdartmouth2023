@@ -5,10 +5,13 @@ import './style.scss';
 console.log('HERE', import.meta.env.VITE_MAPBOX_API_KEY);
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY;
+
+// will need to get dataObj from API
 // eslint-disable-next-line max-len
 const data = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"there are pads and tampons in first floor bathroom","tag":"menstrual products"},"geometry":{"coordinates":[-72.29477886598248,43.70457068113811],"type":"Point"},"id":0},{"type":"Feature","properties":{"description":"there are condoms free for grabs","tag":"safe sex"},"geometry":{"coordinates":[-72.29097810842507,43.70455069849166],"type":"Point"},"id":1},{"type":"Feature","properties":{"description":"gender neutral bathroom on second floor","tag":"Gender-Neutral Bathrooms"},"geometry":{"coordinates":[-72.29063105823391,43.70316583207975],"type":"Point"},"id":2},{"type":"Feature","properties":{"description":"pads and tampons in bathroom","tag":"menstrual product"},"geometry":{"coordinates":[-72.29459482602407,43.703738064222506],"type":"Point"},"id":3}]}';
 const dataObj = JSON.parse(data);
 console.log(dataObj);
+
 function MapContainer(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
