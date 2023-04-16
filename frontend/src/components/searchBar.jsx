@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-  InputGroup, Input,
-} from '@chakra-ui/react';
-// import { PhoneIcon } from '@chakra-ui/icons';
+import { Input } from '@chakra-ui/react';
+
 function SearchBar() {
   return (
     <div>
-      <InputGroup>
-        {/* <InputLeftElement pointerEvents="none" children={<PhoneIcon color="gray.300" />} /> */}
-        <Input placeholder="Search" />
-      </InputGroup>
+      <form>
+        <Input placeholder="Search" size="lg" w="30em" />
+      </form>
     </div>
   );
 }
