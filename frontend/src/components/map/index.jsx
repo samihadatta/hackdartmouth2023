@@ -95,10 +95,12 @@ function MapContainer(props) {
           type: 'FeatureCollection',
           features: [],
         },
+      }).then(() => {
+        const geojsonSource = map.current.getSource('source_id');
+        console.log('geojsonSource', geojsonSource);
+        geojsonSource.setData(dataObj);
       });
     });
-    const geojsonSource = map.current.getSource('source_id');
-    geojsonSource.setData(dataObj);
 
     // pins.current = [new mapboxgl.Marker({
     //   color: '#FFFFFF',
