@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 // import { createStore, applyMiddleware, compose } from 'redux';
 import { ChakraProvider } from '@chakra-ui/react';
 import './style.scss';
+import theme from './components/theme';
 
 import App from './components/App';
 
@@ -17,7 +18,7 @@ import App from './components/App';
 const root = createRoot(document.getElementById('main'));
 root.render(
   // <Provider store={store}>
-  <ChakraProvider>
+  <ChakraProvider theme={theme}>
     <App />
   </ChakraProvider>,
 
