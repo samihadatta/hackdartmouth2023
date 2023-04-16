@@ -3,7 +3,7 @@ import Chatbot from './chatbot';
 import SearchBar from './searchBar';
 import Filter from './filter';
 import AddButton from './addButton';
-import MapContainer from './map';
+import Map from './map';
 
 function Home() {
   return (
@@ -11,8 +11,8 @@ function Home() {
       <SearchBar />
       <Filter />
       <Chatbot />
-      <MapContainer />
       <AddButton />
+      <Map />
     </div>
   );
 }

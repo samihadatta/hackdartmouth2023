@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box, Checkbox, CheckboxGroup, Stack,
 } from '@chakra-ui/react';
 
-function Filter() {
+function Filter(props) {
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState(['bathroom', 'safesex', 'menstrual', 'community', 'clinics']);
+
+  const handleCheckboxChange = (values) => {
+    setSelectedCheckboxes(values);
+    console.log(values);
+  };
   return (
     <div>
       <Box m={4}>
-        <CheckboxGroup defaultValue={['bathroom', 'safesex', 'menstrual', 'community', 'clinics']}>
+        <CheckboxGroup value={selectedCheckboxes} onChange={handleCheckboxChange}>
           <Stack spacing={[1, 5]} direction={['column', 'row']}>
             <Checkbox value="bathroom">Gender-Neutral Bathrooms</Checkbox>
             <Checkbox value="safesex">Safe Sex Products</Checkbox>
