@@ -29,48 +29,56 @@ function MapContainer(props) {
       zoom,
     });
     map.current.on('load', () => {
-      map.current.loadImage(
-        'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
-        (error, image) => {
-          if (error) throw error;
-          map.current.addImage('custom-marker', image);
-          map.current.addSource('source_id', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [],
-            },
-          });
-          const geojsonSource = map.current.getSource('source_id');
-          geojsonSource.setData(dataObj);
-          // map.current.addLayer({
-          //   id: 'source_id',
-          //   type: 'symbol',
-          //   source: 'source_id',
-          //   layout: {
-          //     'icon-image': 'custom-marker',
-          //     // get the title name from the source's "title" property
-          //     // 'text-field': ['get', 'description'],
-          //     'text-font': [
-          //       'Open Sans Semibold',
-          //       'Arial Unicode MS Bold',
-          //     ],
-          //     'text-offset': [0, 1.25],
-          //     'text-anchor': 'top',
-          //   },
-          // });
+      map.current.addSource('source_id', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [],
         },
-      );
-      pins.current = [new mapboxgl.Marker({
-        color: '#FFFFFF',
-        //   draggable: true,
-      }).setLngLat([30.5, 50.5])];
-      popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
-        'Construction on the Washington Monument began in 1848.',
-      )];
-      pins.current.forEach((pin, i) => {
-        pin.setPopup(popups.current[i]).addTo(map.current);
       });
+      const geojsonSource = map.current.getSource('source_id');
+      geojsonSource.setData(dataObj);
+      // map.current.addLayer({
+      //   id: 'source_id',
+      //   type: 'symbol',
+      //   source: 'source_id',
+      //   layout: {
+      //     'icon-image': 'custom-marker',
+      //     // get the title name from the source's "title" property
+      //     // 'text-field': ['get', 'description'],
+      //     'text-font': [
+      //       'Open Sans Semibold',
+      //       'Arial Unicode MS Bold',
+      //     ],
+      //     'text-offset': [0, 1.25],
+      //     'text-anchor': 'top',
+      //   },
+      // });
+      pins.current = [];
+      popups.current = [];
+      dataObj.features.forEach((feature) => {
+        pins.current.push(
+          new mapboxgl.Marker({
+            color: '#FFFFFF',
+          }).setLngLat([feature.geometry.coordinates[0], feature.geometry.coordinates[1]]),
+        );
+
+        popups.current.push(
+          new mapboxgl.Popup({ offset: 25 }).setText(feature.properties.description),
+        );
+
+        pins.current[pins.current.length - 1].setPopup(popups.current[popups.current.length - 1]).addTo(map.current);
+      });
+      // pins.current = [new mapboxgl.Marker({
+      //   color: '#FFFFFF',
+      //   //   draggable: true,
+      // }).setLngLat([30.5, 50.5])];
+      // popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
+      //   'Construction on the Washington Monument began in 1848.',
+      // )];
+      // pins.current.forEach((pin, i) => {
+      //   pin.setPopup(popups.current[i]).addTo(map.current);
+      // });
     });
   });
 
