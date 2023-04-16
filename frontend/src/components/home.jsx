@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import Chatbot from './chatbot';
+import { useDisclosure, Text } from '@chakra-ui/react';
+import Chatbot from './chatbot';
 // import SearchBar from './searchBar';
-import { useDisclosure } from '@chakra-ui/react';
 import Filter from './filter/filter';
 // import AddButton from './addButton';
 import Map from './map';
@@ -55,13 +55,14 @@ function Home() {
 
   return (
     <div>
+      <Text fontSize="4xl">CareMap</Text>
       <Modal isOpen={isOpen} onOpen={onOpen} onClose={onModalClose} newLng={newLng} newLat={newLat} />
       {/* <SearchBar /> */}
       <div />
       <Filter setFilter={(filters) => setFilter(filters)} />
-      {/* <Chatbot /> */}
       {/* <AddButton /> */}
       {renderMap}
+      <Chatbot />
     </div>
   );
 }
