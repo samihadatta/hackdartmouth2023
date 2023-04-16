@@ -5,9 +5,13 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY;
 
+const colors = {
+  bathroom: '#B97BCE', safesex: '#C57288', menstrual: '#8272C5', community: '#72C5B1', clinics: '#88C572',
+};
+
 // will need to get dataObj from API
 // eslint-disable-next-line max-len
-const data = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"there are pads and tampons in first floor bathroom","tag":"menstrual products"},"geometry":{"coordinates":[-72.29477886598248,43.70457068113811],"type":"Point"},"id":0},{"type":"Feature","properties":{"description":"there are condoms free for grabs","tag":"safe sex"},"geometry":{"coordinates":[-72.29097810842507,43.70455069849166],"type":"Point"},"id":1},{"type":"Feature","properties":{"description":"gender neutral bathroom on second floor","tag":"Gender-Neutral Bathrooms"},"geometry":{"coordinates":[-72.29063105823391,43.70316583207975],"type":"Point"},"id":2},{"type":"Feature","properties":{"description":"pads and tampons in bathroom","tag":"menstrual product"},"geometry":{"coordinates":[-72.29459482602407,43.703738064222506],"type":"Point"},"id":3}]}';
+const data = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"there are pads and tampons in first floor bathroom","tag":"menstrual"},"geometry":{"coordinates":[-72.29477886598248,43.70457068113811],"type":"Point"},"id":0},{"type":"Feature","properties":{"description":"there are condoms free for grabs","tag":"safesex"},"geometry":{"coordinates":[-72.29097810842507,43.70455069849166],"type":"Point"},"id":1},{"type":"Feature","properties":{"description":"gender neutral bathroom on second floor","tag":"bathrooms"},"geometry":{"coordinates":[-72.29063105823391,43.70316583207975],"type":"Point"},"id":2},{"type":"Feature","properties":{"description":"pads and tampons in bathroom","tag":"menstrual"},"geometry":{"coordinates":[-72.29459482602407,43.703738064222506],"type":"Point"},"id":3}]}';
 const dataObj = JSON.parse(data);
 console.log(dataObj);
 
@@ -59,7 +63,7 @@ function MapContainer(props) {
       dataObj.features.forEach((feature) => {
         pins.current.push(
           new mapboxgl.Marker({
-            color: '#FFFFFF',
+            color: colors[feature.properties.tag],
           }).setLngLat([feature.geometry.coordinates[0], feature.geometry.coordinates[1]]),
         );
 
