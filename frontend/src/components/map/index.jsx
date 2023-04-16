@@ -13,6 +13,8 @@ function MapContainer(props) {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
+  const [newLng, setNewLng] = useState(-70.9);
+  const [newLat, setNewLat] = useState(42.35);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -22,6 +24,7 @@ function MapContainer(props) {
       center: [lng, lat],
       zoom,
     });
+    map.current.addControl(new mapboxgl.NavigationControl());
     pins.current = [new mapboxgl.Marker({
       color: '#FFFFFF',
     }).setLngLat([30.5, 50.5])];
@@ -40,7 +43,13 @@ function MapContainer(props) {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
-  });
+    map.current.on('dblclick', (e) => {
+      console.log('click!', e.lngLat.wrap(), e.lngLat.wrap().lng, e.lngLat.wrap().lat);
+      setNewLng(e.lngLat.wrap().lng);
+      setNewLat(e.lngLat.wrap().lat);
+      console.log(newLng, newLat);
+    });
+  }, []);
 
   return (
     <div>
