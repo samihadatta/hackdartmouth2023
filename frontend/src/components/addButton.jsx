@@ -10,7 +10,7 @@ function AddButton() {
   return (
     <div>
       <Box marginTop={4}>
-        <Button onClick={onOpen} colorScheme="blue">Add Location</Button>
+        <Button onClick={onOpen} colorScheme="brand">Add Location</Button>
         <Modal isOpen={isOpen} onClose={onClose} size="xl">
           <ModalOverlay />
           <ModalContent m={2}>
