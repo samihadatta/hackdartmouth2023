@@ -19,6 +19,8 @@ const colors = {
 // console.log(dataObj);
 
 function MapContainer(props) {
+  // eslint-disable-next-line react/prop-types
+  const { clickCallback } = props;
   const mapContainer = useRef(null);
   const map = useRef(null);
   const pins = useRef(null);
@@ -81,6 +83,15 @@ function MapContainer(props) {
             pins.current[pins.current.length - 1].setPopup(popups.current[popups.current.length - 1]).addTo(map.current);
           });
         });
+        map.current.on('dblclick', (e) => {
+          e.preventDefault();
+          console.log('click!', e.lngLat.wrap(), e.lngLat.wrap().lng, e.lngLat.wrap().lat);
+          setNewLng(e.lngLat.wrap().lng);
+          setNewLat(e.lngLat.wrap().lat);
+          console.log(newLng, newLat);
+          clickCallback(e.lngLat.wrap().lng, e.lngLat.wrap().lat);
+        });
+        map.current.addControl(new mapboxgl.NavigationControl());
       });
 
     // // eslint-disable-next-line react/prop-types
@@ -166,6 +177,7 @@ function MapContainer(props) {
       setNewLng(e.lngLat.wrap().lng);
       setNewLat(e.lngLat.wrap().lat);
       console.log(newLng, newLat);
+      clickCallback(e.lngLat.wrap().lng, e.lngLat.wrap().lat);
     });
 
     console.log(`hi ${filter}`);
