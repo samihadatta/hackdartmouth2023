@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import './style.scss';
 import 'mapbox-gl/dist/mapbox-gl.css';
 // import { getGeoJSON } from '../store/actions';
+import geoData from '../../data/geo.json';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY;
 
@@ -12,8 +13,9 @@ const colors = {
 
 // will need to get dataObj from API
 // eslint-disable-next-line max-len
-const data = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"there are pads and tampons in first floor bathroom","tag":"menstrual"},"geometry":{"coordinates":[-72.29477886598248,43.70457068113811],"type":"Point"},"id":0},{"type":"Feature","properties":{"description":"there are condoms free for grabs","tag":"safesex"},"geometry":{"coordinates":[-72.29097810842507,43.70455069849166],"type":"Point"},"id":1},{"type":"Feature","properties":{"description":"gender neutral bathroom on second floor","tag":"bathrooms"},"geometry":{"coordinates":[-72.29063105823391,43.70316583207975],"type":"Point"},"id":2},{"type":"Feature","properties":{"description":"pads and tampons in bathroom","tag":"menstrual"},"geometry":{"coordinates":[-72.29459482602407,43.703738064222506],"type":"Point"},"id":3}]}';
-const dataObj = JSON.parse(data);
+// const data = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"there are pads and tampons in first floor bathroom","tag":"menstrual"},"geometry":{"coordinates":[-72.29477886598248,43.70457068113811],"type":"Point"},"id":0},{"type":"Feature","properties":{"description":"there are condoms free for grabs","tag":"safesex"},"geometry":{"coordinates":[-72.29097810842507,43.70455069849166],"type":"Point"},"id":1},{"type":"Feature","properties":{"description":"gender neutral bathroom on second floor","tag":"bathrooms"},"geometry":{"coordinates":[-72.29063105823391,43.70316583207975],"type":"Point"},"id":2},{"type":"Feature","properties":{"description":"pads and tampons in bathroom","tag":"menstrual"},"geometry":{"coordinates":[-72.29459482602407,43.703738064222506],"type":"Point"},"id":3}]}';
+const dataObj = geoData;
+// const dataObj = JSON.parse(data);
 console.log(dataObj);
 
 function MapContainer(props) {
@@ -26,9 +28,18 @@ function MapContainer(props) {
   const [zoom, setZoom] = useState(9);
   const [newLng, setNewLng] = useState(-70.9);
   const [newLat, setNewLat] = useState(42.35);
+  // eslint-disable-next-line react/prop-types
+  const { filter } = props;
+  // useEffect(() => {
+  //   console.log(`filter hi ${filter}`);
+  // }, [filter]);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    // eslint-disable-next-line react/prop-types
+    // const { filter } = props;
+    // eslint-disable-next-line react/prop-types
+    console.log(`map${filter}`);
+    // if (map.current) return; // initialize map only once // commented out to update filters
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
@@ -64,7 +75,11 @@ function MapContainer(props) {
       // });
       pins.current = [];
       popups.current = [];
-      dataObj.features.forEach((feature) => {
+      // eslint-disable-next-line react/prop-types
+      const filteredData = dataObj.features.filter((feature) => filter.includes(feature.properties.tag));
+      console.log(`pins ${pins.current}`);
+      // dataObj.features.forEach((feature) => {
+      filteredData.forEach((feature) => {
         pins.current.push(
           new mapboxgl.Marker({
             color: colors[feature.properties.tag],
@@ -88,7 +103,7 @@ function MapContainer(props) {
       //   pin.setPopup(popups.current[i]).addTo(map.current);
       // });
     });
-  });
+  }, [filter]);
 
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
@@ -104,7 +119,9 @@ function MapContainer(props) {
       setNewLat(e.lngLat.wrap().lat);
       console.log(newLng, newLat);
     });
-  });
+
+    console.log(`hi ${filter}`);
+  }, [filter]);
 
   return (
     <div>

@@ -1,0 +1,190 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Irving: there are pads and tampons in first floor bathroom",
+        "tag": "menstrual",
+        "title": "Irving"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.29477886598248,
+          43.70457068113811
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Cube: there are condoms free for grabs",
+        "tag": "safesex",
+        "title": "Cube"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.29097810842507,
+          43.70455069849166
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "FOCO: gender neutral bathroom on second floor",
+        "tag": "bathroom",
+        "title": "South Mass"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.29063105823391,
+          43.70316583207975
+        ],
+        "type": "Point"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "ECSC: pads and tampons in bathroom",
+        "tag": "menstrual",
+        "title": "ECSC"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.29459482602407,
+          43.703738064222506
+        ],
+        "type": "Point"
+      },
+      "id": 3
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Dick's House: health clinic",
+        "tag": "clinic",
+        "title": "Dick's House"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.28696125872673,
+          43.70868812827297
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "SWC: free condoms and sex products",
+        "tag": "safesex",
+        "title": "SWC"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.28866117193388,
+          43.70535599162568
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Mid Mass: gender neutral bathrooms on 3rd floor",
+        "tag": "bathroom",
+        "title": "Mid Mass"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.290489784909,
+          43.70391191039948
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Hop: gender neutral bathroom on 1st floor by Hood",
+        "tag": "bathroom",
+        "title": "Hop"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.2881511345584,
+          43.70182730657089
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Triangle: LGBTQ LLC",
+        "tag": "community",
+        "title": "Triangle"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.28307052513236,
+          43.7050537119712
+        ],
+        "type": "Point"
+      },
+      "id": 8
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "OPAL: LGBTQ advising",
+        "tag": "community",
+        "title": "OPAL"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.2885497319295,
+          43.70530032609972
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Onion: condoms",
+        "tag": "safesex",
+        "title": "Onion"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.28507062726216,
+          43.70239100494186
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Tabard: gender-inclusive Greek house",
+        "tag": "community",
+        "title": "Tabard"
+      },
+      "geometry": {
+        "coordinates": [
+          -72.29067853686259,
+          43.70646268245352
+        ],
+        "type": "Point"
+      }
+    }
+  ]
+}

@@ -7,9 +7,7 @@ const theme = extendTheme({
     button: 'Inter, serif',
   },
   colors: {
-    brand: {
-      100: '#7BD0FF',
-    },
+    primary: '#7BD0FF',
   },
 });
 
