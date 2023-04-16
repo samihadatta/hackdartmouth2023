@@ -35,6 +35,7 @@ function Home() {
   return (
     <div>
       {/* <SearchBar /> */}
+      <div />
       <Filter setFilter={(filters) => setFilter(filters)} />
       {/* <Chatbot /> */}
       {/* <AddButton /> */}
