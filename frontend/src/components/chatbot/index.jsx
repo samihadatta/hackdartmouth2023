@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 // import makeRequest from './configuration';
+import { Input, Button, Text } from '@chakra-ui/react';
 import { askChatGPT } from '../../state/actions';
 
 function Chatbot() {
   const [request, setRequest] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState('Awaiting a question...');
   // const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -18,20 +19,11 @@ function Chatbot() {
 
   return (
     <div>
-      <h1>Chatbot</h1>
-      <form>
-        <label htmlFor="name">
-          What question do you have?
-          <br />
-          <input type="text" id="name" label="name" value={request} onChange={handleChange} />
-        </label>
-        <button type="button" value="submit" onClick={handleSubmit}> Submit</button>
-      </form>
-
-      <div>
-        <h2>Response</h2>
-        <p>{response}</p>
-      </div>
+      <Text>CareChat</Text>
+      <Text>Ask me about sexual or reproductive health!</Text>
+      <Input type="text" id="name" label="name" value={request} onChange={handleChange} />
+      <Button type="button" value="submit" onClick={handleSubmit}> Submit</Button>
+      <Text>{response}</Text>
     </div>
   );
 }
