@@ -57,6 +57,7 @@ function Home() {
     <div>
       <Modal isOpen={isOpen} onOpen={onOpen} onClose={onModalClose} newLng={newLng} newLat={newLat} />
       {/* <SearchBar /> */}
+      <div />
       <Filter setFilter={(filters) => setFilter(filters)} />
       {/* <Chatbot /> */}
       {/* <AddButton /> */}
