@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './style.scss';
-
-console.log('HERE', import.meta.env.VITE_MAPBOX_API_KEY);
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY;
 
@@ -15,9 +14,11 @@ console.log(dataObj);
 function MapContainer(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-72.29459482602407);
-  const [lat, setLat] = useState(43.703738064222506);
-  const [zoom, setZoom] = useState(15);
+  const pins = useRef(null);
+  const popups = useRef(null);
+  const [lng, setLng] = useState(-70.9);
+  const [lat, setLat] = useState(42.35);
+  const [zoom, setZoom] = useState(9);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -42,24 +43,34 @@ function MapContainer(props) {
           });
           const geojsonSource = map.current.getSource('source_id');
           geojsonSource.setData(dataObj);
-          map.current.addLayer({
-            id: 'source_id',
-            type: 'symbol',
-            source: 'source_id',
-            layout: {
-              'icon-image': 'custom-marker',
-              // get the title name from the source's "title" property
-              // 'text-field': ['get', 'description'],
-              'text-font': [
-                'Open Sans Semibold',
-                'Arial Unicode MS Bold',
-              ],
-              'text-offset': [0, 1.25],
-              'text-anchor': 'top',
-            },
-          });
+          // map.current.addLayer({
+          //   id: 'source_id',
+          //   type: 'symbol',
+          //   source: 'source_id',
+          //   layout: {
+          //     'icon-image': 'custom-marker',
+          //     // get the title name from the source's "title" property
+          //     // 'text-field': ['get', 'description'],
+          //     'text-font': [
+          //       'Open Sans Semibold',
+          //       'Arial Unicode MS Bold',
+          //     ],
+          //     'text-offset': [0, 1.25],
+          //     'text-anchor': 'top',
+          //   },
+          // });
         },
       );
+      pins.current = [new mapboxgl.Marker({
+        color: '#FFFFFF',
+        //   draggable: true,
+      }).setLngLat([30.5, 50.5])];
+      popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
+        'Construction on the Washington Monument began in 1848.',
+      )];
+      pins.current.forEach((pin, i) => {
+        pin.setPopup(popups.current[i]).addTo(map.current);
+      });
     });
   });
 
