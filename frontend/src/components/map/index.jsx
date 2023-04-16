@@ -19,6 +19,8 @@ function MapContainer(props) {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
+  const [newLng, setNewLng] = useState(-70.9);
+  const [newLat, setNewLat] = useState(42.35);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -28,6 +30,7 @@ function MapContainer(props) {
       center: [lng, lat],
       zoom,
     });
+
     map.current.on('load', () => {
       map.current.loadImage(
         'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
@@ -61,16 +64,17 @@ function MapContainer(props) {
           // });
         },
       );
-      pins.current = [new mapboxgl.Marker({
-        color: '#FFFFFF',
-        //   draggable: true,
-      }).setLngLat([30.5, 50.5])];
-      popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
-        'Construction on the Washington Monument began in 1848.',
-      )];
-      pins.current.forEach((pin, i) => {
-        pin.setPopup(popups.current[i]).addTo(map.current);
-      });
+    });
+
+    map.current.addControl(new mapboxgl.NavigationControl());
+    pins.current = [new mapboxgl.Marker({
+      color: '#FFFFFF',
+    }).setLngLat([30.5, 50.5])];
+    popups.current = [new mapboxgl.Popup({ offset: 25 }).setText(
+      'Construction on the Washington Monument began in 1848.',
+    )];
+    pins.current.forEach((pin, i) => {
+      pin.setPopup(popups.current[i]).addTo(map.current);
     });
   });
 
@@ -80,6 +84,13 @@ function MapContainer(props) {
       setLng(map.current.getCenter().lng.toFixed(4));
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
+    });
+    map.current.on('dblclick', (e) => {
+      e.preventDefault();
+      console.log('click!', e.lngLat.wrap(), e.lngLat.wrap().lng, e.lngLat.wrap().lat);
+      setNewLng(e.lngLat.wrap().lng);
+      setNewLat(e.lngLat.wrap().lat);
+      console.log(newLng, newLat);
     });
   });
 
