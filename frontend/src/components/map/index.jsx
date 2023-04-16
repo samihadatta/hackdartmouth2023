@@ -12,6 +12,8 @@ const dataObj = JSON.parse(data);
 console.log(dataObj);
 
 function MapContainer(props) {
+  // eslint-disable-next-line react/prop-types
+  const { clickCallback } = props;
   const mapContainer = useRef(null);
   const map = useRef(null);
   const pins = useRef(null);
@@ -91,6 +93,7 @@ function MapContainer(props) {
       setNewLng(e.lngLat.wrap().lng);
       setNewLat(e.lngLat.wrap().lat);
       console.log(newLng, newLat);
+      clickCallback(e.lngLat.wrap().lng, e.lngLat.wrap().lat);
     });
   });
 
