@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './style.scss';
 import 'mapbox-gl/dist/mapbox-gl.css';
+// import { getGeoJSON } from '../store/actions';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_API_KEY;
 
@@ -20,9 +21,11 @@ function MapContainer(props) {
   const map = useRef(null);
   const pins = useRef(null);
   const popups = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(9);
+  const [lng, setLng] = useState(
+    -72.29477886598248,
+  );
+  const [lat, setLat] = useState(43.70457068113811);
+  const [zoom, setZoom] = useState(15);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
