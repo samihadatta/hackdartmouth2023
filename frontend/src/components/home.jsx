@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDisclosure } from '@chakra-ui/react';
+import { useDisclosure, Text } from '@chakra-ui/react';
 import Chatbot from './chatbot';
 // import SearchBar from './searchBar';
 import Filter from './filter/filter';
@@ -55,6 +55,7 @@ function Home() {
 
   return (
     <div>
+      <Text fontSize="4xl">CareMap</Text>
       <Modal isOpen={isOpen} onOpen={onOpen} onClose={onModalClose} newLng={newLng} newLat={newLat} />
       {/* <SearchBar /> */}
       <div />
