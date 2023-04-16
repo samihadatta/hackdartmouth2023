@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import makeRequest from './configuration';
+import { useDispatch } from 'react-redux';
+// import makeRequest from './configuration';
+import { askChatGPT } from '../../state/actions';
 
 function Chatbot() {
   const [request, setRequest] = useState('');
   const [response, setResponse] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    makeRequest(request).then(setResponse);
+    dispatch(askChatGPT(request)).then(setResponse);
   };
 
   const handleChange = (e) => {

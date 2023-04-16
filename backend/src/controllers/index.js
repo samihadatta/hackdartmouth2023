@@ -1,3 +1,4 @@
+import chatGptController from './chatGptController';
 import submissionController from './submissionController';
 
-export { submissionController };
+export { chatGptController, submissionController };
