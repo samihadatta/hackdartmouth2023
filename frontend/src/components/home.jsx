@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 // import Chatbot from './chatbot';
 // import SearchBar from './searchBar';
 import Filter from './filter/filter';
@@ -7,11 +7,8 @@ import Map from './map';
 
 function Home() {
   const [filter, setFilter] = useState([]);
-  useEffect(() => {
-    console.log(filter);
-  });
 
-  const renderMap = filter.length > 0 ? <Map filter={filter} /> : null;
+  const renderMap = (filter.length > 0) ? <Map filter={filter} /> : null;
 
   return (
     <div>
